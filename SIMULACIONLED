@@ -1,1 +1,42 @@
+#include <iostream>
 
+using namespace std;
+
+// Esta funcion no hace nada util, solo "pierde tiempo" contando
+// hasta un numero grande. La usamos para simular una pausa,
+// sin necesidad de librerias especiales de tiempo.
+void esperar() {
+    long contador = 0;
+    long limite = 300000000; // si tu compu es muy rapida o muy lenta,
+                              // podes subir o bajar este numero
+    while (contador < limite) {
+        contador++;
+    }
+}
+
+int main() {
+    bool ledEncendido = false;   // estado inicial del LED: apagado
+    int ciclos = 10;             // cuantas veces va a parpadear
+
+    cout << "Iniciando simulacion de LED..." << endl;
+    cout << "-------------------------------" << endl;
+
+    for (int i = 1; i <= ciclos; i++) {
+        // Cambiamos el estado del LED (esto es lo que hace un LED real
+        // cuando le mandas una seÃ±al HIGH/LOW en un microcontrolador)
+        ledEncendido = !ledEncendido;
+
+        if (ledEncendido) {
+            cout << "[Ciclo " << i << "] LED: ON  (*)" << endl;
+        } else {
+            cout << "[Ciclo " << i << "] LED: OFF ( )" << endl;
+        }
+
+        esperar(); // simula el delay() de Arduino
+    }
+
+    cout << "-------------------------------" << endl;
+    cout << "Simulacion terminada." << endl;
+
+    return 0;
+}
