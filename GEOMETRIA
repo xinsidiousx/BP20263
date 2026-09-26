@@ -1,1 +1,89 @@
+#include <iostream>
+#include <cmath> // para usar M_PI y pow()
 
+using namespace std;
+
+// --- Funciones para cada figura ---
+// Separar en funciones ayuda a que el programa sea mas ordenado y facil de leer
+
+void calcularCuadrado() {
+    double lado;
+    cout << "Ingrese el lado del cuadrado: ";
+    cin >> lado;
+
+    double area = lado * lado;
+    double perimetro = lado * 4;
+
+    cout << "Area: " << area << endl;
+    cout << "Perimetro: " << perimetro << endl;
+}
+
+void calcularCirculo() {
+    double radio;
+    cout << "Ingrese el radio del circulo: ";
+    cin >> radio;
+
+    double area = M_PI * pow(radio, 2);
+    double perimetro = 2 * M_PI * radio; // tambien llamado circunferencia
+
+    cout << "Area: " << area << endl;
+    cout << "Perimetro (circunferencia): " << perimetro << endl;
+}
+
+void calcularTriangulo() {
+    double base, altura, ladoA, ladoB, ladoC;
+
+    cout << "Ingrese la base del triangulo: ";
+    cin >> base;
+    cout << "Ingrese la altura del triangulo: ";
+    cin >> altura;
+
+    cout << "Ahora ingrese los 3 lados para calcular el perimetro:" << endl;
+    cout << "Lado A: ";
+    cin >> ladoA;
+    cout << "Lado B: ";
+    cin >> ladoB;
+    cout << "Lado C: ";
+    cin >> ladoC;
+
+    double area = (base * altura) / 2;
+    double perimetro = ladoA + ladoB + ladoC;
+
+    cout << "Area: " << area << endl;
+    cout << "Perimetro: " << perimetro << endl;
+}
+
+int main() {
+    int opcion;
+
+    do {
+        // Mostramos el menu cada vez que el ciclo se repite
+        cout << "\n===== MENU DE GEOMETRIA =====" << endl;
+        cout << "1. Cuadrado" << endl;
+        cout << "2. Circulo" << endl;
+        cout << "3. Triangulo" << endl;
+        cout << "4. Salir" << endl;
+        cout << "Elija una opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                calcularCuadrado();
+                break;
+            case 2:
+                calcularCirculo();
+                break;
+            case 3:
+                calcularTriangulo();
+                break;
+            case 4:
+                cout << "Saliendo del programa..." << endl;
+                break;
+            default:
+                cout << "Opcion invalida, intente de nuevo." << endl;
+        }
+
+    } while (opcion != 4);
+
+    return 0;
+}
